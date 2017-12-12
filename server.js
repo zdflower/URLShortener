@@ -111,6 +111,7 @@ app.get("/acortar/:dir(*)", function (request, response) {
 
 
 //ruta para ir de la url acortada a la original
+
 app.get('/:url', function(request, response){
   	//ver si url está en la base de datos y en ese caso redirigir a la url original
 	//si no está mostrar un mensaje
@@ -137,7 +138,10 @@ app.get('/:url', function(request, response){
 
 	    } else {
             console.log("No se encontró la dirección.");
-	    	console.log(url_orig);
+           	console.log(url_orig);
+            response.send({
+                error: "La url no se encuentra en la base de datos."
+        });
 	    }
     });
 });
